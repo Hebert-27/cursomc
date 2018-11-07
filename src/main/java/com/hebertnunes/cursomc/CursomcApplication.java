@@ -1,6 +1,7 @@
 package com.hebertnunes.cursomc;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -35,12 +36,12 @@ public class CursomcApplication implements CommandLineRunner{
 		Produto p2 = new Produto(null, "Impressora", 900.00);
 		Produto p3 = new Produto(null, "Mouse", 280.00);
 		
-		cat1.getCategorias().add((Produto) Arrays.asList(p1, p2, p3));
-		cat1.getCategorias().add((Produto) Arrays.asList(p2));
+		cat1.getCategorias().addAll((Collection<? extends Produto>) Arrays.asList(p1, p2, p3));
+		cat1.getCategorias().addAll((Collection<? extends Produto>) Arrays.asList(p2));
 		
-		p1.getCategorias().add((Categoria) Arrays.asList(cat1));
-		p1.getCategorias().add((Categoria) Arrays.asList(cat1, cat2));
-		p1.getCategorias().add((Categoria) Arrays.asList(cat1));
+		p1.getCategorias().addAll((Collection<? extends Categoria>) Arrays.asList(cat1));
+		p1.getCategorias().addAll((Collection<? extends Categoria>) Arrays.asList(cat1, cat2));
+		p1.getCategorias().addAll((Collection<? extends Categoria>) Arrays.asList(cat1));
 		
 		
 		

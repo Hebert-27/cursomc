@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
@@ -21,6 +20,7 @@ public class Produto implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String nome;
 	private double preco;
 	
@@ -29,7 +29,11 @@ public class Produto implements Serializable{
 		joinColumns = @JoinColumn(name = "product_id"),
 		inverseJoinColumns = @JoinColumn(name = "category_id")
 	)
-	private List<Categoria> categorias = new ArrayList();
+	private List<Categoria> categorias = new ArrayList<Categoria>();
+	
+	public Produto() {
+		
+	}
 	
 	public Produto(Integer id, String nome, double preco) {
 		super();
@@ -38,7 +42,7 @@ public class Produto implements Serializable{
 		this.preco = preco;
 	}
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 

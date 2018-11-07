@@ -17,11 +17,15 @@ public class Categoria implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String nome;
 	
 	@ManyToMany(mappedBy="categorias")
-	private List <Produto> produtos = new ArrayList();
+	private List <Produto> produtos = new ArrayList<Produto>();
 	
+	public Categoria() {
+	
+	}
 	
 	public Categoria(Integer id, String nome) {
 		super();
